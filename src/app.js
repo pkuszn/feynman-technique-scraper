@@ -1,11 +1,23 @@
 import express from "express";
-const port = 6000;
+import cors from "cors";
+import { allowCrossDomain, corsOptions } from "./config/corsOptions.js";
+import errorHandler from "./middleware/errorHandler.js";
+import scraperApi from "./api/scraper.js";
+
+const port = process.env.ENV || 6000;
 const app = express();
 
-app.get("/", (req, res) => {
-    res.writeHead(200, { "Content-Type": "text/plain"});
-    res.end("Hello word");
-})
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+app.use(cors(corsOptions));
+app.use(allowCrossDomain);
+app.use(errorHandler);
+
+app.use('/scrap', scraperApi);
+
+app.all('/*', (req, res) => {
+    res.status(400);
+});
 
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}/`);

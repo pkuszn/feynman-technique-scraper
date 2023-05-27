@@ -24,7 +24,6 @@ export async function runScraper(url) {
     catch(exception){
         console.log(exception)
     }
-
 }
 let words = [];
 let contexts = [];
