@@ -1,9 +1,9 @@
 import scraperUtils from './scraperUtils.js';
-import { prepositions, pronouns } from './constants.js'
+import { prepositions, pronouns } from '../constants/partOfSpeeches.js'
 
 class cleaner {
 
-    hasPronouns(list) {
+    static hasPronouns(list) {
         if (list.length <= 0) {
             console.log("List is null or empty")
             return;
@@ -17,7 +17,7 @@ class cleaner {
         return [...new Set(list)];
     }
 
-    hasPrepositions(list) {
+    static hasPrepositions(list) {
         if (list.length <= 0) {
             console.log("List is null or empty")
             return;
@@ -31,7 +31,7 @@ class cleaner {
         return [...new Set(list)];
     }
 
-    setLowerCase(list){
+    static setLowerCase(list){
         if(list.length <= 0){
             console.log("List is null or empty")
             return;
@@ -40,7 +40,7 @@ class cleaner {
         return lowerCasesList;
     }
 
-    removeWhitespaces(list){
+    static removeWhitespaces(list){
         if(list.length <= 0){
             console.log("List is null or empty")
             return;
@@ -49,7 +49,7 @@ class cleaner {
         return withoutEmptySpacesList;
     }
 
-    skipWhitespaces(list){
+    static skipWhitespaces(list){
         let listWithoutWhitespaces = []
         for(let item of list){
             if(scraperUtils.matchWhiteSpaces(item)){
@@ -60,7 +60,7 @@ class cleaner {
         return listWithoutWhitespaces;
     }
 
-    removeSpecialCharacters(list){
+    static removeSpecialCharacters(list){
         if(list.length <=0){
             console.log("List is null or empty")
             return;

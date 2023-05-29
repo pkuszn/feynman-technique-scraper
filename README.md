@@ -24,3 +24,15 @@ A simple and fast scraper for collection sentences as list
     ]
 }
 ```
+
+## Run scraper from cli
+
+``` powershell
+    node input_file link filename
+```
+
+example
+``` powershell
+    node input.js "https://www.superkid.pl/dzieci-dzieciom-bajka-o-smoku-i-krolewnie" ./test.txt
+```
+
