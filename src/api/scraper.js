@@ -3,9 +3,6 @@ import scraperController from "../controllers/scraperController.js"
 
 const router = express.Router();
 
-router.route('/one')
-    .post(scraperController.scrapOne);
-
 router.route('/many')
     .post(scraperController.scrapMany);
 
