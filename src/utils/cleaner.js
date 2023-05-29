@@ -1,5 +1,6 @@
 import scraperUtils from './scraperUtils.js';
 import { prepositions, pronouns } from '../constants/partOfSpeeches.js'
+import { htmlTags, cssBasicTags, cssAdvancedTags } from '../constants/tags.js'
 
 class cleaner {
 
@@ -8,12 +9,8 @@ class cleaner {
             console.log("List is null or empty")
             return;
         }
-
-        let pronounsList = pronouns;
-        list = list.filter((el) => {
-            return !pronounsList.includes(el);
-        });
-
+        let pronounsList = new Set(pronouns);
+        list = list.filter((el) => !pronounsList.has(el));
         return [...new Set(list)];
     }
 
@@ -22,17 +19,13 @@ class cleaner {
             console.log("List is null or empty")
             return;
         }
-
-        let prepositionsList = prepositions;
-        list = list.filter((el) => {
-            return !prepositionsList.includes(el);
-        });
-
+        let prepositionsList = new Set(prepositions);
+        list = list.filter((el) => !prepositionsList.has(el));
         return [...new Set(list)];
     }
 
-    static setLowerCase(list){
-        if(list.length <= 0){
+    static setLowerCase(list) {
+        if (list.length <= 0) {
             console.log("List is null or empty")
             return;
         }
@@ -40,8 +33,8 @@ class cleaner {
         return lowerCasesList;
     }
 
-    static removeWhitespaces(list){
-        if(list.length <= 0){
+    static removeWhitespaces(list) {
+        if (list.length <= 0) {
             console.log("List is null or empty")
             return;
         }
@@ -49,10 +42,10 @@ class cleaner {
         return withoutEmptySpacesList;
     }
 
-    static skipWhitespaces(list){
+    static skipWhitespaces(list) {
         let listWithoutWhitespaces = []
-        for(let item of list){
-            if(scraperUtils.matchWhiteSpaces(item)){
+        for (let item of list) {
+            if (scraperUtils.matchWhiteSpaces(item)) {
                 continue;
             }
             listWithoutWhitespaces.push(item);
@@ -60,66 +53,66 @@ class cleaner {
         return listWithoutWhitespaces;
     }
 
-    static removeSpecialCharacters(list){
-        if(list.length <=0){
+    static removeSpecialCharacters(list) {
+        if (list.length <= 0) {
             console.log("List is null or empty")
             return;
         }
-        
+
         let splitedSentencesList = []
-        for(let item of list){
-            if(item.length <= 0){
+        for (let item of list) {
+            if (item.length <= 0) {
                 continue;
             }
 
             let withoutNums = scraperUtils.removeNumbers(item);
-            if(withoutNums.length <= 0){
+            if (withoutNums.length <= 0) {
                 continue;
             }
 
             let withoutSpecialChars = scraperUtils.removeSpecialChars(withoutNums);
-            if(withoutSpecialChars.length <= 0){
+            if (withoutSpecialChars.length <= 0) {
                 continue;
             }
 
             let withoutDoubleLow = scraperUtils.removeDoubleLow_9_QuotationMark(withoutSpecialChars);
-            if(withoutDoubleLow.length <= 0){
+            if (withoutDoubleLow.length <= 0) {
                 continue;
             }
 
             let withoutRightDouble = scraperUtils.removeRightDoubleQuotationMark(withoutDoubleLow);
-            if(withoutRightDouble.length <= 0){
+            if (withoutRightDouble.length <= 0) {
                 continue;
             }
 
             let withoutEmDash = scraperUtils.removeEmDash(withoutRightDouble);
-            if(withoutEmDash.length <= 0){
+            if (withoutEmDash.length <= 0) {
                 continue;
             }
 
             let withoutEnDash = scraperUtils.removeEnDash(withoutEmDash);
-            if(withoutEnDash.length <= 0){
+            if (withoutEnDash.length <= 0) {
                 continue;
             }
 
             let withoutHorizontalBar = scraperUtils.removeHorizontalBar(withoutEnDash);
-            if(withoutHorizontalBar.length <= 0){
+            if (withoutHorizontalBar.length <= 0) {
                 continue;
             }
 
             let withoutCopyrightSign = scraperUtils.removeCopyrightSign(withoutHorizontalBar);
-            if(withoutCopyrightSign.length <= 0){
+            if (withoutCopyrightSign.length <= 0) {
                 continue;
             }
 
             let itemsArray = withoutCopyrightSign.split(' ');
-            if(itemsArray.length <= 0){
+            if (itemsArray.length <= 0) {
                 continue;
             }
 
             let array = [];
-            for(let item of itemsArray){
-                if(item.length <= 0 || scraperUtils.hasWhitespace(item)){
+            for (let item of itemsArray) {
+                if (item.length <= 0 || scraperUtils.hasWhitespace(item)) {
                     continue;
                 }
 
@@ -128,6 +121,36 @@ class cleaner {
             Array.prototype.push.apply(splitedSentencesList, array);
         }
         return [...new Set(splitedSentencesList)];
+    }
+
+    static hasTags(list) {
+        if (list.length <= 0) {
+            console.log("List is null or empty");
+            return;
+        }
+        const tagsList = new Set(htmlTags);
+        list = list.filter(el => !tagsList.has(el));
+        return [...new Set(list)];
+    }
+
+    static hasCSSBasicTags(list) {
+        if (list.length <= 0) {
+            console.log("List is null or empty");
+            return;
+        }
+        const tagsList = new Set(cssBasicTags);
+        list = list.filter(el => !tagsList.has(el));
+        return [...new Set(list)];
+    }
+
+    static hasCSSAdvancedTags(list) {
+        if (list.length <= 0) {
+            console.log("List is null or empty");
+            return;
+        }
+        const tagsList = new Set(cssAdvancedTags);
+        list = list.filter(el => !tagsList.has(el));
+        return [...new Set(list)];
     }
 }
 export default cleaner;

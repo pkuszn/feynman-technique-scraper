@@ -25,7 +25,7 @@ A simple and fast scraper for collection sentences as list
 }
 ```
 
-## Run scraper from cli
+## Run scraper from terminal
 
 ``` powershell
     node input_file link filename

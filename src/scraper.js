@@ -71,7 +71,10 @@ class scraper {
 			let toLowerCaseList = garbageCleaner.setLowerCase(withoutWhitespaces);
 			let withoutPrepositions = garbageCleaner.hasPrepositions(toLowerCaseList);
 			let withoutPronouns = garbageCleaner.hasPronouns(withoutPrepositions);
-			let withoutSpecialChars = garbageCleaner.removeSpecialCharacters(withoutPronouns);
+			let withoutHTMLTags = garbageCleaner.hasTags(withoutPronouns);
+			let withoutCSSBasicTags = garbageCleaner.hasCSSBasicTags(withoutHTMLTags);
+			let withoutCSSAdvancedTags = garbageCleaner.hasCSSAdvancedTags(withoutCSSBasicTags);
+			let withoutSpecialChars = garbageCleaner.removeSpecialCharacters(withoutCSSAdvancedTags);
 			let skipWhitespaces = garbageCleaner.skipWhitespaces(withoutSpecialChars);
 			if (skipWhitespaces.length == 0) {
 				return [];
