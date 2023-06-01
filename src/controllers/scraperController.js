@@ -1,5 +1,6 @@
 import scraper from "../scraper.js";
 import expressAsyncHandler from 'express-async-handler';
+import { words } from "../models/words.js";
 
 const scrapMany = expressAsyncHandler(async (req, res) => {
     if (req.body.links == undefined || req.body.links == "") {
@@ -12,7 +13,7 @@ const scrapMany = expressAsyncHandler(async (req, res) => {
         const tokens = sc.getTokens();
         if (tokens.length > 0) {
             console.log(`Scrapped text from ${sc.getLink()}:"${sc.getContext().trim()}"`);
-            result.push(tokens);
+            result.push(new words(link, tokens));
         }
     }
     if (result.length == 0) {
