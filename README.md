@@ -3,8 +3,12 @@ A simple and fast scraper for collection sentences as list
 
 ## Usage
 
-### Run scraper to collect words from one link
+### Start service
+``` powershell
+    node app.js
+```
 
+### Run scraper to collect words from one link
 
 *Request http://localhost:6000/scrap/scrap-one*
 ``` json
