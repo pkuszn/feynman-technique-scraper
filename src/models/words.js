@@ -1,9 +1,9 @@
 export class words {
     source;
-    wordList = [];
+    words = [];
 
-    constructor(source, wordList) {
+    constructor(source, words) {
         this.source = source;
-        this.wordList = wordList;
+        this.words = words;
     }
 }
