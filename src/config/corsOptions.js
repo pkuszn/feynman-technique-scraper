@@ -1,5 +1,5 @@
 const whitelist = [
-    'https://www.yoursite.com',
+    'http://172.23.87.250:6000',
     'http://127.0.0.1:6000',
     'http://127.0.0.1:6000',
     "http://192.168.1.107:6000",
@@ -7,7 +7,7 @@ const whitelist = [
     "http://localhost:6000",
     "http://192.168.55.101:6000",
     "http://192.168.55.103:6000",
-    "http://192.168.55.107:6000"
+    "http://192.168.1.13:6000"
 ];
 
 const corsOptions = {
