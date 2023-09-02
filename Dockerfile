@@ -4,5 +4,5 @@ WORKDIR /opt/app
 COPY src/package.json src/package-lock.json ./
 RUN npm install
 COPY src/ .
-EXPOSE 6200
+EXPOSE 6000
 CMD [ "npm", "start"]

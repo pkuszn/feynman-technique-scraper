@@ -8,7 +8,7 @@
             "instances": 4,
             "max_memory_restart": "200M",
             "env": {
-                "PORT": 6200,
+                "PORT": 6000,
                 "NODE_ENV": "development"
             }
         }

@@ -7,9 +7,9 @@ services:
     container_name: feynman-technique-scraper
     restart: always
     ports:
-      - '6200:6200'
+      - '6000:6000'
     expose:
-      - '6200'
+      - '6000'
     networks:
       - ft-network
     volumes:
