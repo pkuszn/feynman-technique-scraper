@@ -1,6 +1,11 @@
 # feynman-technique-scraper
 A simple and fast scraper for collection sentences as list
 
+## Requirements
+
+- Node.js
+- WSL/Linux
+
 ## Usage
 
 ### Start service
