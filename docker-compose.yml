@@ -4,7 +4,16 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    container_name: feynman-technique-scraper
+    restart: always
     ports:
       - '3200:3200'
+    networks:
+      - ft-network
+    volumes:
+      - feynman-technique-core-data:/data
 volumes:
   feynman-technique-core-data:
+networks:
+    ft-network:
+        external: true
