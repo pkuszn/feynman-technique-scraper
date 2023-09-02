@@ -13,9 +13,9 @@ services:
     networks:
       - ft-network
     volumes:
-      - feynman-technique-core-data:/data
+      - feynman-technique-scraper-data:/data
 volumes:
-  feynman-technique-core-data:
+  feynman-technique-scraper-data:
 networks:
     ft-network:
         external: true
