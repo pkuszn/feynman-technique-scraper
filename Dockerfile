@@ -6,4 +6,4 @@ RUN npm install
 RUN mkdir -p /opt/logs
 COPY src/ .
 EXPOSE 6000
-CMD [ "npm", "start"]
+CMD [ "npm", "run", "pm2"]
