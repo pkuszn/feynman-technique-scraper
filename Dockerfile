@@ -5,5 +5,5 @@ COPY src/package.json src/package-lock.json ./
 RUN npm install
 RUN mkdir -p /opt/logs
 COPY src/ .
-EXPOSE 6000
+EXPOSE 6200
 CMD [ "npm", "run", "pm2"]

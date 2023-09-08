@@ -4,7 +4,7 @@ import { allowCrossDomain, corsOptions } from "./config/corsOptions.js";
 import errorHandler from "./middleware/errorHandler.js";
 import scraperApi from "./api/scraper.js";
 
-const port = process.env.PORT || 6000;
+const port = 6200;
 const app = express();
 
 app.use(express.urlencoded({ extended: false }));
