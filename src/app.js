@@ -4,7 +4,8 @@ import { allowCrossDomain, corsOptions } from "./config/corsOptions.js";
 import errorHandler from "./middleware/errorHandler.js";
 import scraperApi from "./api/scraper.js";
 
-const port = 6200;
+const PORT = 6200;
+const HOST = "0.0.0.0";
 const app = express();
 
 app.use(express.urlencoded({ extended: false }));
@@ -19,6 +20,6 @@ app.all('/*', (req, res) => {
     res.status(400);
 });
 
-app.listen(port, () => {
-    console.log(`Server running at http://localhost:${port}/`);
+app.listen(PORT, HOST, () => {
+    console.log(`Server running at http://localhost:${HOST}:${PORT}/`);
 });
