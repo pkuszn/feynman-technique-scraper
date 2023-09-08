@@ -21,5 +21,5 @@ app.all('/*', (req, res) => {
 });
 
 app.listen(PORT, HOST, () => {
-    console.log(`Server running at http://localhost:${HOST}:${PORT}/`);
+    console.log(`Server running at http://${HOST}:${PORT}/`);
 });
