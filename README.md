@@ -1,5 +1,6 @@
 # feynman-technique-scraper
-A simple and fast scraper for collection sentences as list
+
+Use the scraper service to collect words from given websites. The app connects with other services to determine the part of speech of collected text, then sentences are entered into the database using the REST API service.
 
 ## Requirements
 
@@ -31,7 +32,7 @@ A simple and fast scraper for collection sentences as list
     node input_file link filename
 ```
 
-example
+example of saving output to file
 ``` powershell
     node input.js "https://www.superkid.pl/dzieci-dzieciom-bajka-o-smoku-i-krolewnie" ./test.txt
 ```
