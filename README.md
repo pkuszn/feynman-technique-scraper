@@ -1,6 +1,6 @@
 # feynman-technique-scraper
 
-Use the scraper service to collect words from given websites. The app connects with other services to determine the part of speech of collected text, then sentences are entered into the database using the REST API service.
+Use the scraper service to collect words from given websites. The app is used in other services to determine the part of speech of collected text, then sentences are entered into the database using the REST API service. Basically, program download text from websites and give an output in the form of a list of words.
 
 ## Requirements
 
